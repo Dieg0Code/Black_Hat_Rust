@@ -1,0 +1,7 @@
+# SHA-1 hash cracker
+
+[SHA-1](https://en.wikipedia.org/wiki/SHA-1) es una [función de hash](https://en.wikipedia.org/wiki/Hash_function) criptográfica usada por un montón de websites antiguos para almacenar las contraseñas de sus usuarios. En teoría, una contraseña "hasheada" no puede ser recuperada a partir de su hash. Por lo tanto almacenar el hash en su base de datos debería ser una buena idea, un website puede confiar en que el usuario se sabe su contraseña y no necesita que la contraseña sea almacenada en la base de datos como texto plano, tan solo comparamos el hash de la contraseña introducida con el hash de la contraseña almacenada en la base de datos. Asique si la base de datos de website es comprometida, no debería ser posible que puedan saber la contraseña de un usuario.
+
+Pero la realidad es bastante diferente. Imaginemos un escenario donde nosotros logramos comprometer una base de datos de un website, y ahora queremos recuperar las credenciales de el usuario para así ganar acceso a su cuenta. Aquí es donde un "hash cracker" puede ser útil. Un hash cracker es un programa que tratará muchos diferentes hashes para así poder encontrar la contraseña original.
+
+Es por esto que cuando creamos un website, deberíamos usar una función de hash específicamente diseñada para este caso de uso, algo como [argon2id](https://en.wikipedia.org/wiki/Argon2), el cual requiere de muchos mas recursos para crackear un hash por fuerza bruta que con SHA-1.
